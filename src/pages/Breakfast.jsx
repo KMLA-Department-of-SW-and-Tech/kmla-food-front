@@ -1,9 +1,45 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Loader from "../components/Loader";
+import Comments from "../components/Comments";
+import StarPoints from "../components/StarPoints";
 
-const Breakfast = (props) => {
-  //var breakfastMenu = props.data.data.menu[0].breakfast;
-  //console.log(props.data.data.menu[0].breakfast);
-  return <div>Hi</div>;
+const Breakfast = () => {
+  var date = new Date();
+  let URL = `https://schoolmenukr.ml/api/high/K100000414?date=${date.getDate()}`;
+
+  //var breakfast = [];
+
+  const [isLoading, setLoading] = useState(true);
+  const [breakfastData, setBreakfastData] = useState([]);
+
+  useEffect(() => {
+    axios.get(URL).then((response) => {
+      setBreakfastData(response.data.menu[0].breakfast);
+      //lunch = response.data.menu[0].lunch;
+      //console.log(response.data.menu[0].breakfast);
+      //console.log(breakfastData);
+      setLoading(false);
+    });
+  }, []);
+  if (isLoading) {
+    return (
+      <div className="App">
+        <Loader type="spin" color="RGB 값" message="Loading..." />
+      </div>
+    );
+  }
+  const breakfastMenuList = breakfastData.map((menu, index) => (
+    <li key={index}>{menu}</li>
+  ));
+
+  return (
+    <>
+      <div className="App">{breakfastMenuList}</div>
+      <Comments />
+      <StarPoints type = "breakfast" />
+    </>
+  );
 };
 
 export default Breakfast;

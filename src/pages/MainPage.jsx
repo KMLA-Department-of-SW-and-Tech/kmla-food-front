@@ -9,6 +9,8 @@ import Lunch from "./Lunch";
 import Breakfast from "./Breakfast";
 import Dinner from "./Dinner";
 import mockFoodData from "../assets/mockFoodData.json";
+import Comments from "../components/Comments";
+import DatePicking from "../components/DatePicking";
 
 const MainPage = () => {
   let date = new Date();
@@ -45,6 +47,7 @@ const MainPage = () => {
   return (
     <div className="menutab">
       <Box sx={{ width: "60%", typography: "body1" }}>
+        
         <TabContext value={time}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
             <TabList onChange={handleChange} aria-label="food time" centered>
