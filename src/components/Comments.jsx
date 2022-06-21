@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { TextField, Button } from "@mui/material";
 
-import "./components.css";
+//import "./components.css";
 
 const Comments = () => {
   const [comment, setComment] = React.useState("");
