@@ -12,14 +12,14 @@ const StarPoints = (props) => {
   }else if(type === "dinner"){
     type = "저녁";
   }
-
+  console.log(props.date.getDate())
   useEffect(() => {
-    console.log(value);
+    //console.log(value);
   }, [value]);
 
   return (
     <>
-    <p>6/3 {type}을 평가해주세요</p>
+    <p>{props.date.getMonth()+1}/{props.date.getDate()} {type}을 평가해주세요</p>
     <Rating
       name="simple-controlled"
       value={value}

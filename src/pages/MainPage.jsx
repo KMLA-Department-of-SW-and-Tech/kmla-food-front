@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, setState } from "react";
 import axios from "axios";
 import Tab from "@material-ui/core/Tab";
 import TabContext from "@material-ui/lab/TabContext";
@@ -11,6 +11,10 @@ import Dinner from "./Dinner";
 import mockFoodData from "../assets/mockFoodData.json";
 import Comments from "../components/Comments";
 import DatePicking from "../components/DatePicking";
+import TextField from "@mui/material/TextField";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 const MainPage = () => {
   let date = new Date();
@@ -23,6 +27,14 @@ const MainPage = () => {
   } else {
     type = 1;
   }
+  const [value, setValue] = React.useState(new Date());
+
+  const onChangeDate = (newValue) => {
+    setValue(newValue);
+    this.setState({value: newValue})
+  };
+
+  React.useEffect(() => {}, [value]);
 
   const [time, setTime] = useState(type.toString());
 
@@ -47,7 +59,14 @@ const MainPage = () => {
   return (
     <div className="menutab">
       <Box sx={{ width: "60%", typography: "body1" }}>
-        
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <DatePicker
+            label="Basic example"
+            value={value}
+            onChange={onChangeDate}
+            renderInput={(params) => <TextField {...params} />}
+          />
+        </LocalizationProvider>
         <TabContext value={time}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
             <TabList onChange={handleChange} aria-label="food time" centered>
@@ -57,13 +76,13 @@ const MainPage = () => {
             </TabList>
           </Box>
           <TabPanel value="1">
-            <Breakfast />
+            <Breakfast date = {value} />
           </TabPanel>
           <TabPanel value="2">
-            <Lunch />
+            <Lunch date = {value} />
           </TabPanel>
           <TabPanel value="3">
-            <Dinner />
+            <Dinner date = {value} />
           </TabPanel>
         </TabContext>
       </Box>

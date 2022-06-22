@@ -18,13 +18,13 @@ const Comments = () => {
     <div>
       <TextField
         id="outlined-basic"
-        label="Outlined"
+        label="급식을 평가해주세요"
         variant="outlined"
         className="textfield"
         onChange = {handleChange}
       />
       <Button variant="outlined" className="button">
-        Outlined
+        입력
       </Button>
     </div>
   );
