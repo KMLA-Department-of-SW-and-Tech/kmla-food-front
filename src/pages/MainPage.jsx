@@ -16,11 +16,16 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
+function useForceUpdate() {
+  const [value, setValue] = useState(0);
+  return () => setValue((value) => value + 1);
+}
+
 const MainPage = () => {
   let date = new Date();
   let type = 1;
 
-  if (date.getHours() >= 12 && date.getHours() < 17) {
+  if (date.getHours() >= 10 && date.getHours() < 17) {
     type = 2;
   } else if (date.getHours() >= 17) {
     type = 3;
@@ -31,7 +36,7 @@ const MainPage = () => {
 
   const onChangeDate = (newValue) => {
     setValue(newValue);
-    this.setState({value: newValue})
+    this.setState({ value: newValue });
   };
 
   React.useEffect(() => {}, [value]);
@@ -61,7 +66,7 @@ const MainPage = () => {
       <Box sx={{ width: "60%", typography: "body1" }}>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <DatePicker
-            label="Basic example"
+            label="날짜를 선택하세요"
             value={value}
             onChange={onChangeDate}
             renderInput={(params) => <TextField {...params} />}
@@ -76,13 +81,13 @@ const MainPage = () => {
             </TabList>
           </Box>
           <TabPanel value="1">
-            <Breakfast date = {value} />
+            <Breakfast date={value} />
           </TabPanel>
           <TabPanel value="2">
-            <Lunch date = {value} />
+            <Lunch date={value} />
           </TabPanel>
           <TabPanel value="3">
-            <Dinner date = {value} />
+            <Dinner date={value} />
           </TabPanel>
         </TabContext>
       </Box>

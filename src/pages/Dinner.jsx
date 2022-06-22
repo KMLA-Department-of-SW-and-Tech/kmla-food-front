@@ -1,25 +1,32 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Loader from "../components/Loader";
-
-import StarPoints from "../components/StarPoints";
 import Comments from "../components/Comments";
+import StarPoints from "../components/StarPoints";
+import Menu from "../components/Menu";
 
-const Breakfast = () => {
-  var date = new Date();
-  let URL = `https://schoolmenukr.ml/api/high/K100000414?date=${date.getDate()}`;
 
-  //var dinner = [];
+
+const Dinner = (props) => {
+  //const forceUpdate = useForceUpdate();
+
+  var date = new Date(props.date);
+  //console.log(props.date);
+  const [url, setUrl] = useState(
+    `https://schoolmenukr.ml/api/high/K100000414?date=${date.getDate()}`
+  );
+  //this.setState({URL: url})
+  //var breakfast = [];
 
   const [isLoading, setLoading] = useState(true);
   const [dinnerData, setDinnerData] = useState([]);
 
   useEffect(() => {
-    axios.get(URL).then((response) => {
+    axios.get(url).then((response) => {
       setDinnerData(response.data.menu[0].dinner);
       //lunch = response.data.menu[0].lunch;
-      //console.log(response.data.menu[0].dinner);
-      //console.log(dinnerData);
+      //console.log(response.data.menu[0].breakfast);
+      //console.log(breakfastData);
       setLoading(false);
     });
   }, []);
@@ -33,14 +40,17 @@ const Breakfast = () => {
   const dinnerMenuList = dinnerData.map((menu, index) => (
     <li key={index}>{menu}</li>
   ));
+  //React.useEffect(() => {}, [url]);
 
   return (
     <>
+      {/*<Menu menulink={url} />*/}
+      
       <div className="App">{dinnerMenuList}</div>
       <Comments />
-      <StarPoints type = "dinner" />
+      <StarPoints type="breakfast" date={date} />
     </>
   );
 };
 
-export default Breakfast;
+export default Dinner;
