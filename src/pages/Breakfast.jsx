@@ -5,9 +5,7 @@ import Comments from "../components/Comments";
 import StarPoints from "../components/StarPoints";
 import Menu from "../components/Menu";
 
-
-
-const Breakfast = (props) => {
+const Breakfast = (props) => { 
   //const forceUpdate = useForceUpdate();
 
   var date = new Date(props.date);
@@ -45,7 +43,6 @@ const Breakfast = (props) => {
   return (
     <>
       {/*<Menu menulink={url} />*/}
-      
       <div className="App">{breakfastMenuList}</div>
       <Comments />
       <StarPoints type="breakfast" date={date} />
