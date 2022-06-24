@@ -48,7 +48,7 @@ const Lunch = (props) => {
       
       <div className="App">{lunchMenuList}</div>
       <Comments />
-      <StarPoints type="breakfast" date={date} />
+      <StarPoints type="lunch" date={date} />
     </>
   );
 };

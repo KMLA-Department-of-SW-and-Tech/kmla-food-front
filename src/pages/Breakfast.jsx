@@ -5,19 +5,13 @@ import Comments from "../components/Comments";
 import StarPoints from "../components/StarPoints";
 import Menu from "../components/Menu";
 
-function useForceUpdate() {
-  const [value, setValue] = useState(0);
-  return () => setValue((value) => value + 1);
-}
+
 
 const Breakfast = (props) => {
-  const forceUpdate = useForceUpdate();
+  //const forceUpdate = useForceUpdate();
 
   var date = new Date(props.date);
   //console.log(props.date);
-  let state = {
-    url: `https://schoolmenukr.ml/api/high/K100000414?date=${date.getDate()}&month=${date.getMonth()}`,
-  };
   const [url, setUrl] = useState(
     `https://schoolmenukr.ml/api/high/K100000414?date=${date.getDate()}`
   );
