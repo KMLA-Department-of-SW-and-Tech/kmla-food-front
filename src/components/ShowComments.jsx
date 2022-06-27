@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 
 const ShowComments = (props) => {
-  console.log(props.comments);
+  //console.log(props.comments);
   
   const commentData = props.comments
 

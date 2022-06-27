@@ -18,6 +18,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 function useForceUpdate() {
   const [value, setValue] = useState(0);
+  
   return () => setValue((value) => value + 1);
 }
 
@@ -25,6 +26,7 @@ const MainPage = () => {
   let date = new Date();
   let type = 1;
 
+  const [render, setRender] = useState(1);
   if (date.getHours() >= 10 && date.getHours() < 17) {
     type = 2;
   } else if (date.getHours() >= 17) {
@@ -37,6 +39,7 @@ const MainPage = () => {
   const onChangeDate = (newValue) => {
     setValue(newValue);
     this.setState({ value: newValue });
+    setRender(render + 1);
   };
 
   React.useEffect(() => {}, [value]);

@@ -44,7 +44,6 @@ const Breakfast = (props) => {
     <>
       {/*<Menu menulink={url} />*/}
       <div className="App">{breakfastMenuList}</div>
-      <Comments />
       <StarPoints type="breakfast" date={date} />
     </>
   );
