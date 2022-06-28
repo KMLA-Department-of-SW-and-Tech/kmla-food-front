@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import MainPage from './pages/MainPage';
+import ImageUpload from './pages/ImageUpload';
 
 const App = () => {
   return (
@@ -16,6 +17,9 @@ const App = () => {
         <Switch>
           <Route path="/" exact>
             <MainPage />
+          </Route>
+          <Route path="/upload" exact>
+            <ImageUpload />
           </Route>
           <Redirect to="/" />
         </Switch>

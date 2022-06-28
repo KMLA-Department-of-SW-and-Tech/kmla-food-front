@@ -43,7 +43,7 @@ const StarPoints = (props) => {
   }-${props.date.getDate()}`;
 
   useEffect(() => {
-    axios.get(`http://localhost:8800/api/meals/${urlDate}`).then((response) => {
+    axios.get(`http://api.kmlafood.com/api/meals/${urlDate}`).then((response) => {
       setMealData(response.data[0]);
       setLoading(false);
     });
@@ -88,7 +88,7 @@ const StarPoints = (props) => {
     }
     updatedData[urlType].stars = updatedStars;
     await axios.put(
-      `http://localhost:8800/api/meals/${mealData._id}`,
+      `http://api.kmlafood.com/api/meals/${mealData._id}`,
       updatedData
     );
     setRender(render + 1);
@@ -116,7 +116,7 @@ const StarPoints = (props) => {
     updatedData[urlType].comments = updatedComments;
     console.log(updatedData);
     await axios.put(
-      `http://localhost:8800/api/meals/${mealData._id}`,
+      `http://api.kmlafood.com/api/meals/${mealData._id}`,
       updatedData
     );
     setComment("");
@@ -138,6 +138,7 @@ const StarPoints = (props) => {
         variant="outlined"
         className="textfield"
         onChange={handleChange}
+        onSubmit = {handleComment}
       />
       <Button variant="outlined" className="button" onClick={handleComment}>
         입력
@@ -157,7 +158,7 @@ const StarPoints = (props) => {
       <Button variant="outlined" className="button" onClick={handleUpdate}>
         평점 입력
       </Button>
-      <p>평균점수: {(starPointSum / starPointData.length).toFixed(2)}점</p>
+      <p>평균점수: {(starPointSum / starPointData.length).toFixed(2)}점 </p>
       <h1>Today's Comments</h1>
       <ShowComments comments={mealComments} />
       <h1>Pictures</h1>
