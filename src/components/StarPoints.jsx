@@ -9,7 +9,7 @@ import { TextField } from "@mui/material";
 
 const StarPoints = (props) => {
   const [value, setValue] = useState(5);
-  const [mealData, setMealData] = useState([]);
+  const [mealData, setMealData] = useState({});
   const [isLoading, setLoading] = useState(true);
   //const [testData, setTestData] = useState({});
   const [render, setRender] = useState(1);
@@ -44,12 +44,13 @@ const StarPoints = (props) => {
 
   useEffect(() => {
     axios.get(`http://api.kmlafood.com/api/meals/${urlDate}`).then((response) => {
-      console.log("Fetch tried");
       setMealData(response.data[0]);
       setLoading(false);
+      console.log(response.data[0]);
       console.log(mealData);
     });
   }, []);
+
   if (isLoading) {
     return (
       <div className="App">
@@ -57,16 +58,7 @@ const StarPoints = (props) => {
       </div>
     );
   }
-  //console.log(mealData.urlType);
-  //console.log(mealData);
-  //console.log(urlType);
-  //console.log(mealData[urlType]);
-  //console.log(mealData.urlType);
-  //setTestData(mealData.breakfast);
-  //console.log(testData);
-  //console.log(mealData.urlType.comments);
-
-  //console.log(mealData.urlType)
+  
   var starPointData = [0];
   var starPointSum = 0;
   var mealComments = ["아직 댓글이 없습니다."];
