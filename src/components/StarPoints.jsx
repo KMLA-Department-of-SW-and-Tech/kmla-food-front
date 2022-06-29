@@ -43,7 +43,7 @@ const StarPoints = (props) => {
   }-${props.date.getDate()}`;
 
   useEffect(() => {
-    axios.get(`https://api.kmlafood.com/api/meals/${urlDate}`).then((response) => {
+    axios.get(`https://kmla-food.herokuapp.com/api/meals/${urlDate}`).then((response) => {
       setMealData(response.data[0]);
       setLoading(false);
       console.log(response.data[0]);
@@ -82,7 +82,7 @@ const StarPoints = (props) => {
     }
     updatedData[urlType].stars = updatedStars;
     await axios.put(
-      `https://api.kmlafood.com/api/meals/${mealData._id}`,
+      `https://kmla-food.herokuapp.com/api/meals/${mealData._id}`,
       updatedData
     );
     setRender(render + 1);
@@ -110,7 +110,7 @@ const StarPoints = (props) => {
     updatedData[urlType].comments = updatedComments;
     console.log(updatedData);
     await axios.put(
-      `https://api.kmlafood.com/api/meals/${mealData._id}`,
+      `https://kmla-food.herokuapp.com/api/meals/${mealData._id}`,
       updatedData
     );
     setComment("");
