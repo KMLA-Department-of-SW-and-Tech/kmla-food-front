@@ -6,11 +6,12 @@ import {
   Switch,
 } from "react-router-dom";
 
-import MainPage from './pages/MainPage';
-import ImageUpload from './pages/ImageUpload';
+import MainPage from "./pages/MainPage";
+import ImageUpload from "./pages/ImageUpload";
 
 const App = () => {
   return (
+    /*
     <div className="App">
       <Router>
       <main>
@@ -26,7 +27,11 @@ const App = () => {
       </main>
     </Router>
     </div>
+    */
+    <div>
+      <MainPage />
+    </div>
   );
-}
+};
 
 export default App;
