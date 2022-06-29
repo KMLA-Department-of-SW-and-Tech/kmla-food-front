@@ -44,8 +44,10 @@ const StarPoints = (props) => {
 
   useEffect(() => {
     axios.get(`http://api.kmlafood.com/api/meals/${urlDate}`).then((response) => {
+      console.log("Fetch tried");
       setMealData(response.data[0]);
       setLoading(false);
+      console.log(mealData);
     });
   }, []);
   if (isLoading) {
