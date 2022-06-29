@@ -43,7 +43,7 @@ const StarPoints = (props) => {
   }-${props.date.getDate()}`;
 
   useEffect(() => {
-    axios.get(`http://api.kmlafood.com/api/meals/${urlDate}`).then((response) => {
+    axios.get(`https://api.kmlafood.com/api/meals/${urlDate}`).then((response) => {
       setMealData(response.data[0]);
       setLoading(false);
       console.log(response.data[0]);
@@ -82,7 +82,7 @@ const StarPoints = (props) => {
     }
     updatedData[urlType].stars = updatedStars;
     await axios.put(
-      `http://api.kmlafood.com/api/meals/${mealData._id}`,
+      `https://api.kmlafood.com/api/meals/${mealData._id}`,
       updatedData
     );
     setRender(render + 1);
@@ -110,7 +110,7 @@ const StarPoints = (props) => {
     updatedData[urlType].comments = updatedComments;
     console.log(updatedData);
     await axios.put(
-      `http://api.kmlafood.com/api/meals/${mealData._id}`,
+      `https://api.kmlafood.com/api/meals/${mealData._id}`,
       updatedData
     );
     setComment("");
