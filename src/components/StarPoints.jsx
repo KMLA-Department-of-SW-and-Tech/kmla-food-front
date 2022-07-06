@@ -4,14 +4,12 @@ import axios from "axios";
 import ShowComments from "./ShowComments";
 import { Button } from "@mui/material";
 import Loader from "./Loader";
-import { LocalConvenienceStoreOutlined } from "@mui/icons-material";
 import { TextField } from "@mui/material";
 
 const StarPoints = (props) => {
   const [value, setValue] = useState(5);
   const [mealData, setMealData] = useState({});
   const [isLoading, setLoading] = useState(true);
-  //const [testData, setTestData] = useState({});
   const [render, setRender] = useState(1);
   const [comment, setComment] = React.useState("");
 
@@ -19,21 +17,15 @@ const StarPoints = (props) => {
   let urlType = props.type;
   if (type === "breakfast") {
     type = "아침";
-    //urlType = "breakfast";
   } else if (type === "lunch") {
     type = "점심";
-    //urlType = "lunch";
   } else if (type === "dinner") {
     type = "저녁";
-    //urlType = "dinner";
   }
-  //console.log(props.date.getFullYear());  //Fri Jun 24 2022 19:09:26 GMT+0900
   useEffect(() => {
-    //console.log(value);
   }, [value]);
 
   useEffect(() => {
-    //console.log(comment);
   }, [comment]);
 
   useEffect(() => {}, [mealData]);
@@ -43,7 +35,7 @@ const StarPoints = (props) => {
   }-${props.date.getDate()}`;
 
   useEffect(() => {
-    axios.get(`https://kmla-food.herokuapp.com/api/meals/${urlDate}`).then((response) => {
+    axios.get(`https://kmla-food.herokuapp.com/api/meals/${urlDate}`).then((response) => { //Backend Url
       setMealData(response.data[0]);
       setLoading(false);
       console.log(response.data[0]);
@@ -62,7 +54,6 @@ const StarPoints = (props) => {
   var starPointData = [0];
   var starPointSum = 0;
   var mealComments = ["아직 댓글이 없습니다."];
-  //console.log(mealData[urlType].comments.length);
 
   if (mealData[urlType].stars.length !== 0)
     starPointData = mealData[urlType].stars;
@@ -72,7 +63,6 @@ const StarPoints = (props) => {
   const handleUpdate = async () => {
     console.log(mealData);
     const updatedData = mealData;
-    // 수정할 속성
     const updatedStars = [];
     if (starPointData[0] === 0) {
       if (value !== null) updatedStars.push(value);
@@ -87,11 +77,6 @@ const StarPoints = (props) => {
     );
     setRender(render + 1);
     alert("별점이 등록되었습니다");
-    
-
-    //console.log(response.data);
-
-    // state 수정
   };
 
   const handleChange = (event) => {
@@ -122,7 +107,6 @@ const StarPoints = (props) => {
   for (let i = 0; i < starPointData.length; i++) {
     starPointSum += starPointData[i];
   }
-  //console.log(starPointSum);
 
   return (
     <>

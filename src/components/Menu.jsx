@@ -10,9 +10,6 @@ const Menu = (props) => {
   useEffect(() => {
     axios.get(URL).then((response) => {
       setBreakfastData(response.data.menu[0].breakfast);
-      //lunch = response.data.menu[0].lunch;
-      //console.log(response.data.menu[0].breakfast);
-      //console.log(breakfastData);
       setLoading(false);
     });
   }, []);

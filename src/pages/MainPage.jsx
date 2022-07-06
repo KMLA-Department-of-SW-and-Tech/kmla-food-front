@@ -1,5 +1,4 @@
-import React, { useState, useEffect, setState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import Tab from "@material-ui/core/Tab";
 import TabContext from "@material-ui/lab/TabContext";
 import TabList from "@material-ui/lab/TabList";
@@ -8,19 +7,10 @@ import Box from "@mui/material/Box";
 import Lunch from "./Lunch";
 import Breakfast from "./Breakfast";
 import Dinner from "./Dinner";
-import mockFoodData from "../assets/mockFoodData.json";
-import Comments from "../components/Comments";
-import DatePicking from "../components/DatePicking";
 import TextField from "@mui/material/TextField";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-
-function useForceUpdate() {
-  const [value, setValue] = useState(0);
-  
-  return () => setValue((value) => value + 1);
-}
 
 const MainPage = () => {
   let date = new Date();
@@ -50,19 +40,6 @@ const MainPage = () => {
     setTime(newValue);
     type = newValue.toString();
   };
-  /*
-  const [foodData, setFoodData] = useState(mockFoodData);
-
-  let URL = `https://schoolmenukr.ml/api/high/K100000414?date=${date.getDate()}`;
-
-  useEffect(() => {
-    axios.get(URL).then((response) => {
-      //console.log(response.data[0]);
-      setFoodData(response);
-      //console.log(foodData);
-    });
-  }, []);
-  */
 
   return (
     <div className="menutab">
