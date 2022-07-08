@@ -12,6 +12,8 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
+//import './styles.css';
+
 const MainPage = () => {
   let date = new Date();
   let type = 1;
@@ -50,6 +52,7 @@ const MainPage = () => {
             value={value}
             onChange={onChangeDate}
             renderInput={(params) => <TextField {...params} />}
+            className = "date-picker"
           />
         </LocalizationProvider>
         <TabContext value={time}>
