@@ -1,27 +1,7 @@
-/**************************
-This file is needed to be worked on in the future
-
-import React, { useState } from "react";
+import React from 'react';
 
 const ImageUpload = () => {
-  const [selectedFile, setSelectedFile] = useState(null);
-
-  const onFileUpload = () => {
-    const formData = new FormData();
-
-    formData.append("image", selectedFile, selectedFile.name);
-
-  }
-
-  return (
-    <>
-      <h1>Image Upload</h1>
-      <input type="file" name="file" />
-      <button>Upload</button>
-    </>
-  );
-};
+  return <h1>Image Upload</h1>;
+}
 
 export default ImageUpload;
-
-*******/
