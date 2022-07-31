@@ -38,8 +38,8 @@ const StarPoints = (props) => {
     axios.get(`https://kmla-food.herokuapp.com/api/meals/${urlDate}`).then((response) => { //Backend Url
       setMealData(response.data[0]);
       setLoading(false);
-      console.log(response.data[0]);
-      console.log(mealData);
+      //console.log(response.data[0]);
+      //console.log(mealData);
     });
   }, []);
 
