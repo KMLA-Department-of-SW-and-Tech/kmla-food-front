@@ -32,6 +32,7 @@ const Lunch = (props) => {
   return (
     <>
       <div className="App">{lunchMenuList}</div>
+      <BasicModal />
       <StarPoints type="lunch" date={date} />
     </>
   );
