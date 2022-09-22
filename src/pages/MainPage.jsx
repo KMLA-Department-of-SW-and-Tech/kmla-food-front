@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Tab from "@material-ui/core/Tab";
 import TabContext from "@material-ui/lab/TabContext";
 import TabList from "@material-ui/lab/TabList";
@@ -12,16 +12,14 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
-//import './styles.css';
-
 const MainPage = () => {
   let date = new Date();
   let type = 1;
 
   const [render, setRender] = useState(1);
-  if (date.getHours() >= 10 && date.getHours() < 17) {
+  if (date.getHours() >= 9 && date.getHours() < 14) {
     type = 2;
-  } else if (date.getHours() >= 17) {
+  } else if (date.getHours() >= 14) {
     type = 3;
   } else {
     type = 1;
@@ -34,7 +32,9 @@ const MainPage = () => {
     setRender(render + 1);
   };
 
-  React.useEffect(() => {}, [value]);
+  useEffect(() => {
+    
+  }, [value]);
 
   const [time, setTime] = useState(type.toString());
 
@@ -43,10 +43,22 @@ const MainPage = () => {
     type = newValue.toString();
   };
 
+  const datePickerStyle = {
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginRight: "auto",
+    marginLeft: "auto"
+  };
+
+  
+
   return (
     <div className="menutab">
-      <Box sx={{ width: "60%", typography: "body1" }}>
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <Box sx={{ width: "100%", typography: "body1"}}>
+        <LocalizationProvider dateAdapter={AdapterDateFns} sx={{ ...datePickerStyle }}>
           <DatePicker
             label="날짜를 선택하세요"
             value={value}

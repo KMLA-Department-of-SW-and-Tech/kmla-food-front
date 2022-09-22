@@ -17,7 +17,7 @@ const Menu = (props) => {
   if (isLoading) {
     return (
       <div className="App">
-        <Loader type="spin" color="RGB 값" message="Loading..." />
+        <Loader type="spin" color="#FF2400" message="Loading..." />
       </div>
     );
   }

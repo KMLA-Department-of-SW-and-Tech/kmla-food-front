@@ -4,8 +4,8 @@ import {
   Routes,
   Route
 } from 'react-router-dom';
-import ImageUpload from "./pages/ImageUpload";
 
+import ImageUpload from "./pages/ImageUpload";
 import MainPage from "./pages/MainPage";
 
 import './styles.css';

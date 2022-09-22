@@ -22,13 +22,18 @@ const StarPoints = (props) => {
   } else if (type === "dinner") {
     type = "저녁";
   }
+
   useEffect(() => {
+
   }, [value]);
 
   useEffect(() => {
+
   }, [comment]);
 
-  useEffect(() => {}, [mealData]);
+  useEffect(() => {
+
+  }, [mealData]);
 
   var urlDate = `${props.date.getFullYear()}-${
     props.date.getMonth() + 1
@@ -38,8 +43,6 @@ const StarPoints = (props) => {
     axios.get(`https://kmla-food.herokuapp.com/api/meals/${urlDate}`).then((response) => { //Backend Url
       setMealData(response.data[0]);
       setLoading(false);
-      //console.log(response.data[0]);
-      //console.log(mealData);
     });
   }, []);
 

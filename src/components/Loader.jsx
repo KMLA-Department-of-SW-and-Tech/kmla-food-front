@@ -6,7 +6,6 @@ import './Loader.css';
 const Loader = ({ type, color, message }) => {
   return (
     <div className="whirl">
-      
       <div
         style={{
           position: "fixed",

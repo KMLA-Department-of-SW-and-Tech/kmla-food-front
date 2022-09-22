@@ -1,4 +1,6 @@
-.mainpage {
-    margin-right: auto;
-    margin-left: auto;
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+
+* {
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 1.08rem;
 }

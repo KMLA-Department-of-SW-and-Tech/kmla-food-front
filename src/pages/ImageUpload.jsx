@@ -4,7 +4,7 @@ import axios from 'axios';
 const ImageUpload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   
-  const fileSelectedHandler = event => {
+  const fileSelectedHandler = (event) => {
     console.log(event.target.files[0]);
     setSelectedFile(event.target.files[0]);
   }
@@ -12,6 +12,7 @@ const ImageUpload = () => {
   const fileUploadHandler = () => {
     const fd = new FormData();
     fd.append('image', selectedFile, selectedFile.name);
+    axios.post('')
   }
 
   return (
