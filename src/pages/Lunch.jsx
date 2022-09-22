@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Loader from "../components/Loader";
 import StarPoints from "../components/StarPoints";
+import BasicModal from '../components/BasicModal';
 
 const Lunch = (props) => {
   var date = new Date(props.date);

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Loader from "../components/Loader";
 import StarPoints from "../components/StarPoints";
+import BasicModal from "../components/BasicModal";
 
 const Dinner = (props) => {
   var date = new Date(props.date);
@@ -32,6 +33,7 @@ const Dinner = (props) => {
   return (
     <>
       <div className="App">{dinnerMenuList}</div>
+      <BasicModal />
       <StarPoints type="dinner" date={date} />
     </>
   );
