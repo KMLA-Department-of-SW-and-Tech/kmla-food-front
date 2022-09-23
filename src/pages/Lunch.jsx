@@ -18,6 +18,7 @@ const Lunch = (props) => {
       setLoading(false);
     });
   }, [url]);
+
   if (isLoading) {
     return (
       <div className="App">

@@ -5,14 +5,17 @@ import ShowComments from "./ShowComments";
 import { Button } from "@mui/material";
 import Loader from "./Loader";
 import { TextField } from "@mui/material";
+import ShowImages from "./ShowImages";
 
 const StarPoints = (props) => {
   const [value, setValue] = useState(5);
   const [mealData, setMealData] = useState({});
   const [isLoading, setLoading] = useState(true);
   const [render, setRender] = useState(1);
-  const [comment, setComment] = React.useState("");
+  const [comment, setComment] = useState("");
+  const [imgUrl, setImgUrl] = useState("");
 
+  let imgType = props.type;
   let type = props.type;
   let urlType = props.type;
   if (type === "breakfast") {
@@ -23,16 +26,12 @@ const StarPoints = (props) => {
     type = "저녁";
   }
 
-  useEffect(() => {
+  useEffect(() => {}, [value]);
 
-  }, [value]);
-
-  useEffect(() => {
-
-  }, [comment]);
+  useEffect(() => {}, [comment]);
 
   useEffect(() => {
-
+    //console.log(mealData[imgType].picture !== "");
   }, [mealData]);
 
   var urlDate = `${props.date.getFullYear()}-${
@@ -40,10 +39,25 @@ const StarPoints = (props) => {
   }-${props.date.getDate()}`;
 
   useEffect(() => {
-    axios.get(`https://kmla-food.herokuapp.com/api/meals/${urlDate}`).then((response) => { //Backend Url
-      setMealData(response.data[0]);
-      setLoading(false);
-    });
+    /*
+    if (mealData[imgType].picture !== "") {
+      setImgUrl(
+        `https://res.cloudinary.com/dyntnppzm/image/upload/v1663947320/${mealData[imgType].picture}.jpg`
+      );
+      console.log(imgUrl);
+    } else {
+      setImgUrl("");
+    } */
+  }, [imgUrl]);
+
+  useEffect(() => {
+    axios
+      .get(`https://kmla-food.herokuapp.com/api/meals/${urlDate}`)
+      .then((response) => {
+        //Backend Url
+        setMealData(response.data[0]);
+        setLoading(false);
+      });
   }, []);
 
   if (isLoading) {
@@ -53,7 +67,7 @@ const StarPoints = (props) => {
       </div>
     );
   }
-  
+
   var starPointData = [0];
   var starPointSum = 0;
   var mealComments = ["아직 댓글이 없습니다."];
@@ -119,7 +133,7 @@ const StarPoints = (props) => {
         variant="outlined"
         className="textfield"
         onChange={handleChange}
-        onSubmit = {handleComment}
+        onSubmit={handleComment}
       />
       <Button variant="outlined" className="button" onClick={handleComment}>
         입력
@@ -143,7 +157,7 @@ const StarPoints = (props) => {
       <h1>Today's Comments</h1>
       <ShowComments comments={mealComments} />
       <h1>Pictures</h1>
-      <img src={mealData[urlType].picture}></img>
+      <ShowImages src={mealData[imgType].picture} />
     </>
   );
 };

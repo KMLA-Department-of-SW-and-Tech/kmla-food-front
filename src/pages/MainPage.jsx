@@ -28,7 +28,7 @@ const MainPage = () => {
 
   const onChangeDate = (newValue) => {
     setValue(newValue);
-    this.setState({ value: newValue });
+    //this.setState({ value: newValue });
     setRender(render + 1);
   };
 
@@ -52,8 +52,6 @@ const MainPage = () => {
     marginRight: "auto",
     marginLeft: "auto"
   };
-
-  
 
   return (
     <div className="menutab">
