@@ -18,7 +18,7 @@ const ShowImages = (props) => {
       <div>
         <img
           src={`https://res.cloudinary.com/dyntnppzm/image/upload/v1663947320/${imgUrl}.jpg`}
-          style={{ width: "600px" }}
+          style={{ width: "400px" }}
         ></img>
       </div>
     );
