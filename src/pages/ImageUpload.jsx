@@ -10,6 +10,8 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 
+import "./ImageUpload.css";
+
 const ImageUpload = () => {
   const [imageSelected, setImageSelected] = useState("");
   const [value, setValue] = useState(new Date());
@@ -45,7 +47,9 @@ const ImageUpload = () => {
     console.log(type);
     console.log(id);
     axios
-      .put(`https://kmla-food.herokuapp.com/api/meals/${formattedDate}/${type}/${id}`)
+      .put(
+        `https://kmla-food.herokuapp.com/api/meals/${formattedDate}/${type}/${id}`
+      )
       .then((response) => {
         console.log(response);
       });
@@ -59,6 +63,7 @@ const ImageUpload = () => {
           label="Basic example"
           value={value}
           onChange={onChangeDate}
+          style = {{width: "200px"}}
           renderInput={(params) => <TextField {...params} />}
         />
       </LocalizationProvider>
@@ -85,13 +90,23 @@ const ImageUpload = () => {
         }}
         style={{ marginTop: "40px", display: "block" }}
       />
-      <button
-        onClick={uploadImage}
-        style={{ marginTop: "20px" }}
-        className="upload-button"
-      >
-        이미지 업로드
-      </button>
+      <div className="buttons">
+        <button
+          onClick={uploadImage}
+          style={{ marginTop: "20px" }}
+          className="upload-button"
+        >
+          이미지 업로드
+        </button>
+        <button
+          className="home-button"
+          onClick={() => {
+            window.location.href = "/";
+          }}
+        >
+          홈으로 돌아가기
+        </button>
+      </div>
     </>
   );
 };
