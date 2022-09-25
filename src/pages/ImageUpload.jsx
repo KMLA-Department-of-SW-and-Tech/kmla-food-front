@@ -26,7 +26,7 @@ const ImageUpload = () => {
     setType(event.target.value);
   };
 
-  useEffect(() => {}, [value]);
+  useEffect(() => {}, [value, imageSelected]);
 
   const uploadImage = async (files) => {
     const formData = new FormData();
@@ -63,7 +63,6 @@ const ImageUpload = () => {
           label="Basic example"
           value={value}
           onChange={onChangeDate}
-          style = {{width: "200px"}}
           renderInput={(params) => <TextField {...params} />}
         />
       </LocalizationProvider>
