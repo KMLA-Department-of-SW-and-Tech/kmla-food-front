@@ -26,11 +26,10 @@ const ImageUpload = () => {
     setType(event.target.value);
   };
 
-  useEffect(() => {
-  }, [value]);
+  useEffect(() => {}, [value]);
 
   useEffect(() => {
-    console.log(imageSelected)
+    console.log(imageSelected);
   }, [imageSelected]);
 
   const uploadImage = async (files) => {
@@ -49,6 +48,13 @@ const ImageUpload = () => {
     formattedDate += "-";
     formattedDate += value.getDate();
     console.log(formData);
+    axios
+      .put(
+        `https://kmla-food.herokuapp.com/api/meals/${formattedDate}/${type}/${id}`
+      )
+      .then((response) => {
+        console.log(response);
+      });
     axios
       .put(
         `https://kmla-food.herokuapp.com/api/meals/${formattedDate}/${type}/${id}`
