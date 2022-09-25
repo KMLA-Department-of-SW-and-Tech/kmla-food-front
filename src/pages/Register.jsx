@@ -8,7 +8,8 @@ const Register = () => {
   const [passwordCheck, setPasswordCheck] = useState("");
   const [secretKey, setSecretKey] = useState("");
 
-  useEffect(() => {}, [id, name, password, passwordCheck, secretKey]);
+  useEffect(() => {
+  }, [id, name, password, passwordCheck, secretKey]);
 
   const register = (e) => {
     if (password !== passwordCheck) {
@@ -23,7 +24,7 @@ const Register = () => {
     } else if (name.length < 2 || name.length > 10) {
       alert("이름은 2자 이상 10자 이하로 입력해주세요.");
       return;
-    } else if (secretKey !== process.env.REACT_APP_SECRET_KEY) {
+    } else if (secretKey != process.env.REACT_APP_REGISTER_KEY) {
       alert("비밀키가 일치하지 않습니다.");
       return;
     }
