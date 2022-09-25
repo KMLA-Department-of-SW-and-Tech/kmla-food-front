@@ -20,7 +20,7 @@ const Login = () => {
 
   const login = (e) => {
     axios
-      .post("http://localhost:8800/api/auth/login", {
+      .post("https://kmla-food.herokuapp.com/api/auth/login", {
         id: id,
         password: password,
       })
