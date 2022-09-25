@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import "./Login.css";
 
 const Login = () => {
   const [id, setId] = useState("");
-
+  const navigate = useNavigate();
   const [password, setPassword] = useState("");
 
   const onChangeId = (e) => {
@@ -37,6 +38,10 @@ const Login = () => {
     e.preventDefault();
   };
 
+  const onClickRegister = () => {
+    navigate("/register");
+  };
+
   return (
     <>
       <div className="login-form">
@@ -59,9 +64,7 @@ const Login = () => {
           <button className="submit-btn" onClick={login}>
             로그인
           </button>
-          <button className="submit-btn" onClick={() => {
-            window.location.href = "/register";
-          }}>
+          <button className="submit-btn" onClick={onClickRegister}>
             회원가입
           </button>
         </form>
