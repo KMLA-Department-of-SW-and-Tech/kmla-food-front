@@ -10,7 +10,7 @@ const ShowImages = (props) => {
   if (imgUrl === "") {
     return (
       <div>
-        <h1>이미지가 없습니다.</h1>
+        <h2>이미지가 없습니다.</h2>
       </div>
     );
   } else {

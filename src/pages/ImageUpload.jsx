@@ -13,7 +13,7 @@ import FormLabel from "@mui/material/FormLabel";
 const ImageUpload = () => {
   const [imageSelected, setImageSelected] = useState("");
   const [value, setValue] = useState(new Date());
-  const [type, setType] = React.useState("breakfast");
+  const [type, setType] = useState("breakfast");
   const [id, setId] = useState("");
 
   const onChangeDate = (newValue) => {
@@ -24,9 +24,7 @@ const ImageUpload = () => {
     setType(event.target.value);
   };
 
-  useEffect(() => {
-    console.log(value);
-  }, [value]);
+  useEffect(() => {}, [value]);
 
   const uploadImage = async (files) => {
     const formData = new FormData();
@@ -35,10 +33,7 @@ const ImageUpload = () => {
     axios
       .post("https://api.cloudinary.com/v1_1/dyntnppzm/image/upload", formData)
       .then((response) => {
-        console.log(response);
-        id = response.data.public_id;
-        console.log(response.data.public_id);
-        setId(id);
+        setId(response.data.public_id);
       });
     var formattedDate = "";
     formattedDate += value.getFullYear();
@@ -47,13 +42,14 @@ const ImageUpload = () => {
     formattedDate += "-";
     formattedDate += value.getDate();
     console.log(formattedDate);
+    console.log(type);
     console.log(id);
-    console.log(`http://localhost:8800/api/meals/${formattedDate}/${type}/${id}`);
     axios
-      .put(`http://localhost:8800/api/meals/${formattedDate}/${type}/${id}`)
+      .put(`https://kmla-food.herokuapp.com/api/meals/${formattedDate}/${type}/${id}`)
       .then((response) => {
         console.log(response);
       });
+    alert(`${formattedDate} ${type} 이미지가 업로드 되었습니다.`);
   };
 
   return (

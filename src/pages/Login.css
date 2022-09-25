@@ -1,0 +1,36 @@
+.login-form {
+  width: 300px;
+  background-color: rgba(255, 255, 255, 0.88);
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 50px;
+  padding: 20px;
+  text-align: center;
+  border: none;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 1rem;
+}
+
+.text-field {
+  font-size: 14px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  width: 260px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.submit-btn {
+  font-size: 14px;
+  border: none;
+  padding: 10px;
+  width: 260px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}

@@ -154,9 +154,9 @@ const StarPoints = (props) => {
         평점 입력
       </Button>
       <p>평균점수: {(starPointSum / starPointData.length).toFixed(2)}점 </p>
-      <h1>Today's Comments</h1>
+      <h2>Today's Comments</h2>
       <ShowComments comments={mealComments} />
-      <h1>Pictures</h1>
+      <h2>Pictures</h2>
       <ShowImages src={mealData[imgType].picture} />
     </>
   );
